@@ -1,0 +1,25 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/quoccuongnguyen\/Desktop\/FlaskWeb\/static\/scss\/main\.scss}line{font-family:\000031}}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+  font-family: 'Montserrat', sans-serif; }
+
+  @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/quoccuongnguyen\/Desktop\/FlaskWeb\/static\/scss\/main\.scss}line{font-family:\000039}}
+  a {
+    text-decoration: none;
+    color: inherit; }
+
+    @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/quoccuongnguyen\/Desktop\/FlaskWeb\/static\/scss\/main\.scss}line{font-family:\0000314}}
+    ul, ol {
+      margin: 0;
+      padding: 0; }
+
+      @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/quoccuongnguyen\/Desktop\/FlaskWeb\/static\/scss\/main\.scss}line{font-family:\0000319}}
+      body {
+        background: whitesmoke; }
+
+        @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/quoccuongnguyen\/Desktop\/FlaskWeb\/static\/scss\/main\.scss}line{font-family:\0000323}}
+        input, button, textarea {
+          font-family: inherit; }

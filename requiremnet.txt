@@ -1,0 +1,6 @@
+flask
+flask-assets
+pyscss
+underthesea
+transformers
+torch

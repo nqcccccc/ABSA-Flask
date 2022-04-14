@@ -72,15 +72,9 @@ def index():
 
 @app.route('/result', methods=['POST'])
 def result():
-    rf = request.form
-    print('start')
-    print(rf)
-    for key in rf.keys():
-        data = key
-    print(data)
-    data_dict = json.loads(data)
-    return 'nothing'
-
+    text = request.form['text']
+    result = predict_qab(text,aux_sen,pipe)
+    return '---'.join(result)
 
 def predict_qab(input, aux_sen, pipe):
     emoji_pattern = re.compile('['

@@ -3,21 +3,15 @@ $(document).ready(function() {
         text = $('#txtInput').val()
         data = JSON.stringify(text);
         if(text.length > 0) {
+            let startTime = performance.now()
 
-            // $.ajax({
-            //     type : 'POST',
-            //     url : '{{url_for(\'result\')}}',
-            //     contentType: 'application/json;charset=UTF-8',
-            //     data : {'text':text}, 
-            //     success : function(data) {
-            //         $('#spanResult').html(data)
-            //     }
-            //   });
-
-            $.post('/result',data,function(res) {
+            $.post('/result',{text:text},function(res) {
                 $('#spanResult').html(res)
+                let endTime = performance.now()
+                console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
             })
-
+                
+            
         }else{
             alert('Vui lòng nhập câu cần phân tích !')
         }

@@ -1,31 +1,9 @@
-#!/usr/bin/env python
-from flask import Flask, flash, redirect, render_template, request, url_for
-from flask_assets import Environment, Bundle
+import re
+import underthesea
 
 import torch
 import transformers
 from transformers import AutoTokenizer, TextClassificationPipeline, RobertaForSequenceClassification
-
-import underthesea
-import re
-# import json package 
-import json
-
-app = Flask(__name__)
-
-# Load model
-tokenizer = AutoTokenizer.from_pretrained('vinai/phobert-base', use_fast=False)
-
-modelp = RobertaForSequenceClassification.from_pretrained(
-    'nqcccccc/phobert-vlsp-absa-qab')
-pipe = TextClassificationPipeline(model=modelp, tokenizer=tokenizer)
-
-assets = Environment(app)
-assets.url = app.static_url_path
-assets.debug = True
-
-scss = Bundle('scss/main.scss', filters='pyscss', output='gen/all.css')
-assets.register('scss_all', scss)
 
 aux_sen = {'drinks#quality-neutral': 'cảm_xúc về chất_lượng của thức_uống là trung_tính',
            'drinks#quality-positive': 'cảm_xúc về chất_lượng của thức_uống là tích_cực',
@@ -64,19 +42,13 @@ aux_sen = {'drinks#quality-neutral': 'cảm_xúc về chất_lượng của th�
            'ambience#general-positive': 'cảm_xúc về tổng_quan của không_gian là tích_cực',
            'ambience#general-negative': 'cảm_xúc về tổng_quan của không_gian là tiêu_cực'}
 
+tokenizer = AutoTokenizer.from_pretrained('vinai/phobert-base', use_fast=False)
 
-@app.route('/', methods=['GET'])
-def index():
-    return render_template('main.html')
+modelp = RobertaForSequenceClassification.from_pretrained(
+    'nqcccccc/phobert-vlsp-absa-qab')
+pipe = TextClassificationPipeline(model=modelp, tokenizer=tokenizer)
 
-
-@app.route('/result', methods=['POST'])
-def result():
-    text = request.form['text']
-    result = predict_qab(text,aux_sen,pipe)
-    return '---'.join(result)
-
-def predict_qab(input, aux_sen, pipe):
+def predict_qab(input):
     emoji_pattern = re.compile('['
                                u'\U0001F600-\U0001F64F'  # emoticons
                                u'\U0001F300-\U0001F5FF'  # symbols & pictographs
@@ -123,7 +95,3 @@ def predict_qab(input, aux_sen, pipe):
             result.append(all_label[i])
 
     return result
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

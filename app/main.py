@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from flask_assets import Environment, Bundle
 
-from app.phobert_absa import predict_qab
+from phobert_absa import predict_qab
 
 app = Flask(__name__)
 

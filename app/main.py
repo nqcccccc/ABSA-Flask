@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
 from flask_assets import Environment, Bundle
 
-from phobert_absa import predict_qab
+# for debug mode on, remove the app from app.phobert_absa
+# put it back on when deploy to production
+from app.phobert_absa import predict_qab
 
 app = Flask(__name__)
 

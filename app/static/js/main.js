@@ -68,22 +68,24 @@ $(function () {
     });
 });
 
-$(document).ready(function() {
-    $('#btnAnalysis').click(function() {
+$(document).ready(function () {
+    $('#btnAnalysis').click(function () {
         text = $('#sentiment_area').val()
         data = JSON.stringify(text);
-        if(text.length > 0) {
+        if (text.length > 0) {
             let startTime = performance.now()
 
-            $.post('/result',{text:text},function(res) {
+            $.post('/result', { text: text }, function (res) {
                 $('#spanResult').html(res)
                 let endTime = performance.now()
                 console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
             })
-                
-            
-        }else{
+
+
+        } else {
             alert('Vui lòng nhập câu cần phân tích !')
         }
     })
 })
+
+

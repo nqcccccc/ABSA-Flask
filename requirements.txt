@@ -35,3 +35,4 @@ urllib3==1.26.9
 webassets==2.0
 Werkzeug==2.1.1
 zipp==3.8.0
+gunicorn

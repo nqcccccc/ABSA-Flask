@@ -90,7 +90,7 @@ def predict_qab(input):
     tmp_label = []
 
     for i in (aux_sen.keys()):
-        tmp_result = pipe('<s>'+text+'</s>'+aux_sen[i]+'</s>')
+        tmp_result = pipe('<s>'+text+'</s>'+aux_sen[i]+'</s>',padding=True, truncation=True)
         if(tmp_result[0]['label'] == 'LABEL_1'):
             tmp_label.append(1)
         else:
